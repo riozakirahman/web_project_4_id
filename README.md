@@ -1,16 +1,22 @@
-# Proyek 4: Di Sekitar Amerika Serikat
+# Photo Gallery in Profile Project
 
-### Ringkasan
+### Project Description
 
-* Figma
-* Gambar
+This is a photo gallery in user profile webpage.
+Feature:
 
-**Figma**
+- Edit User Profile
 
-* [Tautan ke proyek di Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+**Figma Design**
 
-**Gambar**
+- [Link to Design in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
-Cara Anda melakukannya di tempat kerja adalah dengan mengekspor gambar langsung dari Figma — kami menyarankan melakukan hal tersebut agar Anda berlatih lebih banyak. Jangan lupa untuk mengoptimalkannya [di sini](https://tinypng.com/), sehingga proyek Anda dapat dimuat dengan lebih cepat.
+### Feature
 
-Selamat bersenang-senang dengan JavaScript!
+**Toggle a Pop Up Form**
+
+- Toggle A Pop Up Form using javascript that toggle a class that have a display none to block.
+
+**Edit User Profile**
+
+- Edit User Profile using input value and set the element textContent.
