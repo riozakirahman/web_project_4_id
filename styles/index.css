@@ -1,8 +1,14 @@
 @import url("./normalize.css");
-<<<<<<< HEAD
+@import url("../font/font.css");
 @import url("../blocks/body/body.css");
 @import url("../blocks/header/header.css");
 @import url("../blocks/header/__logo/header__logo.css");
 @import url("../blocks/header/__line/header__line.css");
-=======
->>>>>>> 02b5b4314e6edf207c942a2fbd1fec06e7c970a0
+@import url("../blocks/profile/profile.css");
+@import url("../blocks/profile/__info/profile__info.css");
+@import url("../blocks/profile/__avatar/profile__avatar.css");
+@import url("../blocks/profile/__avatar-img/profile__avatar-img.css");
+@import url("../blocks/profile/__name/profile__name.css");
+@import url("../blocks/profile/__edit-button/profile__edit-button.css");
+@import url("../blocks/profile/__job/profile__job.css");
+@import url("../blocks/profile/__add-button/profile__add-button.css");
