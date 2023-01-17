@@ -1,5 +1,18 @@
 .cards {
   height: 743px;
   width: 880px;
-  margin: 0 auto;
+  margin: 0 auto 67px auto;
+  display: grid;
+  gap: 20px 17px;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+}
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+  .cards {
+    height: 2266px;
+    width: 282px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
 }
