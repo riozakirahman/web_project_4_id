@@ -1,0 +1,8 @@
+.card__like {
+  display: inline-block;
+  height: 19px;
+  width: 21px;
+  bottom: 30px;
+  right: 18px;
+  position: absolute;
+}

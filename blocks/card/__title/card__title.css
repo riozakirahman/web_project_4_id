@@ -1,0 +1,9 @@
+.card__title {
+  display: inline-block;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  text-align: left;
+  margin-left: 21px;
+}
