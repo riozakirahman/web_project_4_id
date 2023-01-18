@@ -1,0 +1,12 @@
+.popup__input {
+  all: unset;
+  width: 358px;
+  border-bottom: 1px solid black;
+  margin: 0 auto 30px auto;
+  padding: 15px 0 19px 0;
+  opacity: 0.2;
+  display: block;
+}
+.popup__input:focus {
+  border: 1px solid red;
+}
