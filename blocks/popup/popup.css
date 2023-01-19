@@ -1,5 +1,6 @@
 .popup {
-  width: 880px;
   margin: 0 auto 50px auto;
   color: black;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
 }

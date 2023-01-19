@@ -4,4 +4,5 @@
   background-color: black;
   min-width: 320px;
   box-sizing: border-box;
+  position: relative;
 }
