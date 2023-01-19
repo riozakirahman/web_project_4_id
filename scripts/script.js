@@ -5,7 +5,7 @@ let popUpForm = popUp.querySelector(".popup__container");
 let popUp_close = popUp.querySelector(".popup__close");
 let editBtn = profile.querySelector(".profile__edit-button");
 let cards = document.querySelector(".cards");
-let card = cards.querySelectorAll(".card");
+let cardLike = cards.querySelectorAll(".card .card__like");
 
 //profile value
 let profile__name = profile.querySelector(".profile__name");
@@ -48,14 +48,8 @@ popUpForm.addEventListener("submit", function (evt) {
   handleProfileFormSubmit(evt);
   popupClose();
 });
-
-for (let i = 0; i < card.length; i++) {
-  let cardLike = card[i].querySelector(".card__like");
-  cardLike.addEventListener("click", function () {
-    if (cardLike.classList.contains("card__like_active")) {
-      deactiveLike();
-    } else {
-      activeLike();
-    }
+cardLike.forEach((c) => {
+  c.addEventListener("click", function () {
+    c.classList.toggle("card__like_active");
   });
-}
+});

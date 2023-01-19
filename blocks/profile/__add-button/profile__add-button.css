@@ -4,6 +4,7 @@
   background-image: url("/images/AddButton.png");
   background-size: cover;
   margin: 35px 0 35px auto;
+  cursor: pointer;
 }
 @media screen and (min-width: 320px) and (max-width: 1279px) {
   .profile__add-button {
