@@ -2,14 +2,14 @@
 let profile = document.querySelector(".profile");
 let popUp = document.querySelector(".popup");
 let popUpForm = popUp.querySelector(".popup__container");
-let popUp_close = popUp.querySelector(".popup__close");
+let popUpClose = popUp.querySelector(".popup__close");
 let editBtn = profile.querySelector(".profile__edit-button");
 let cards = document.querySelector(".cards");
 let cardLike = cards.querySelectorAll(".card .card__like");
 
 //profile value
-let profile__name = profile.querySelector(".profile__name");
-let profile__job = profile.querySelector(".profile__job");
+let profileName = profile.querySelector(".profile__name");
+let profileJob = profile.querySelector(".profile__job");
 
 //input
 let inputName = popUp.querySelector(".popup__input_name");
@@ -17,8 +17,8 @@ let inputJob = popUp.querySelector(".popup__input_about");
 
 function popupOpen() {
   popUp.classList.add("popup_opened");
-  let name = profile__name.textContent;
-  let job = profile__job.textContent;
+  let name = profileName.textContent;
+  let job = profileJob.textContent;
   inputName.value = name;
   inputJob.value = job;
 }
@@ -27,8 +27,8 @@ function popupClose() {
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profile__name.textContent = inputName.value;
-  profile__job.textContent = inputJob.value;
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
 }
 
 function activeLike(cardLike) {
@@ -41,7 +41,7 @@ function deactiveLike(cardLike) {
 editBtn.addEventListener("click", function () {
   popupOpen();
 });
-popUp_close.addEventListener("click", function () {
+popUpClose.addEventListener("click", function () {
   popupClose();
 });
 popUpForm.addEventListener("submit", function (evt) {
