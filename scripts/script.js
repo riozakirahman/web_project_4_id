@@ -48,6 +48,8 @@ let inputName = popUp.querySelector(".popup__input_name");
 let inputJob = popUp.querySelector(".popup__input_about");
 
 const cardTemplate = document.querySelector("#card").content;
+const cardDetailSection = document.querySelector(".card-detail-section");
+const detailTemplate = document.querySelector("#card-detail").content;
 
 function card() {
   initialCards.forEach((data) => {
@@ -63,6 +65,30 @@ function card() {
     cardElement.append(deleteCard);
     cardElement.append(likeCard);
     cards.append(cardElement);
+
+    cardImage.addEventListener("click", () => {
+      console.log("klik");
+      const detailElement = detailTemplate
+        .querySelector(".card-detail")
+        .cloneNode(true);
+      const detailContainer = detailElement.querySelector(
+        ".card-detail__container"
+      );
+      const detailImg = detailElement.querySelector(".card-detail__img");
+      detailImg.src = data.link;
+      const detailLabel = detailElement.querySelector(".card-detail__label");
+      const closeBtn = detailElement.querySelector(".popup__close_card-detail");
+      detailLabel.textContent = data.name;
+      closeBtn.addEventListener("click", () => {
+        detailElement.remove();
+      });
+      detailContainer.append(detailImg);
+      detailContainer.append(detailLabel);
+      detailContainer.append(closeBtn);
+      detailElement.append(detailContainer);
+      cardDetailSection.append(detailElement);
+      window.scrollTo(0, 0);
+    });
 
     deleteCard.addEventListener("click", (e) => {
       let parent = e.target.parentElement;
