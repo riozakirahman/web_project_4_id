@@ -1,3 +1,7 @@
 .card__like_active {
   background-image: url("/images/Union.png");
 }
+.card__like_active:focus {
+  border: 2px solid #0ea5e9;
+  box-shadow: 1px 1px 10px #0ea5e9;
+}
