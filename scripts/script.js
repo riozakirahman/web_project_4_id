@@ -47,6 +47,37 @@ let profileJob = profile.querySelector(".profile__job");
 let inputName = popUp.querySelector(".popup__input_name");
 let inputJob = popUp.querySelector(".popup__input_about");
 
+const cardTemplate = document.querySelector("#card").content;
+
+function card() {
+  initialCards.forEach((data) => {
+    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+    const cardImage = cardElement.querySelector(".card__background");
+    const cardTitle = cardElement.querySelector(".card__title");
+    const deleteCard = cardElement.querySelector(".card__delete");
+    const likeCard = cardElement.querySelector(".card__like");
+    cardImage.src = data.link;
+    cardTitle.textContent = data.name;
+    cardElement.append(cardImage);
+    cardElement.append(cardTitle);
+    cardElement.append(deleteCard);
+    cardElement.append(likeCard);
+    cards.append(cardElement);
+
+    deleteCard.addEventListener("click", (e) => {
+      let parent = e.target.parentElement;
+      parent.remove();
+    });
+    likeCard.addEventListener("click", (e) => {
+      e.target.classList.toggle("card__like_active");
+    });
+    cardElement.addEventListener("click", () => {});
+  });
+}
+//init card
+card();
+const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+
 function popupOpen() {
   popUp.classList.add("popup_opened");
   let name = profileName.textContent;
@@ -67,17 +98,8 @@ function handleAddForm(evt) {
   evt.preventDefault();
 }
 
-function activeLike(cardLike) {
-  cardLike.classList.add("card__like_active");
-}
-function deactiveLike(cardLike) {
-  cardLike.classList.remove("card__like_active");
-}
 function addCard() {
   popUpAdd.classList.toggle("popup_opened");
-}
-function removeCard(parent) {
-  parent.remove();
 }
 
 editBtn.addEventListener("click", function () {
@@ -101,16 +123,4 @@ popUpAddForm.addEventListener("submit", (evt) => {
 
 addBtn.addEventListener("click", () => {
   addCard();
-});
-
-cardLike.forEach((c) => {
-  c.addEventListener("click", function () {
-    c.classList.toggle("card__like_active");
-  });
-});
-cardDelete.forEach((c) => {
-  let parent = c.parentElement;
-  c.addEventListener("click", () => {
-    removeCard(parent);
-  });
 });

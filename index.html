@@ -28,69 +28,14 @@
       <button class="profile__add-button"></button>
     </section>
     <section class="cards">
-      <!-- card Yosemite -->
-      <div class="card">
-        <img
-          src="/images/borobudur.jpg"
-          alt="Candi Borobudur"
-          class="card__background"
-        />
-        <h2 class="card__title">Candi Borobudur, Indonesia</h2>
-        <button class="card__delete"></button>
-        <button class="card__like"></button>
-      </div>
-
-      <!--  -->
-      <div class="card">
-        <img
-          src="/images/batucaves.jpg"
-          alt="Batu Caves"
-          class="card__background"
-        />
-        <h2 class="card__title">Batu Caves, Malaysia</h2>
-        <button class="card__delete"></button>
-        <button class="card__like"></button>
-      </div>
-      <!--  -->
-      <div class="card">
-        <img
-          src="/images/shinjuku.jpg"
-          alt="Shinjuku, Japan"
-          class="card__background"
-        />
-        <h2 class="card__title">Shinjuku, Japan</h2>
-        <button class="card__delete"></button>
-        <button class="card__like"></button>
-      </div>
-      <!--  -->
-      <div class="card">
-        <img src="/images/dubai.jpg" alt="Dubai" class="card__background" />
-        <h2 class="card__title">Dubai</h2>
-        <button class="card__delete"></button>
-        <button class="card__like"></button>
-      </div>
-      <!--  -->
-      <div class="card">
-        <img
-          src="/images/Arcde.jpg"
-          alt="Arc De Triomphe"
-          class="card__background"
-        />
-        <h2 class="card__title">Arc De Triomphe</h2>
-        <button class="card__delete"></button>
-        <button class="card__like"></button>
-      </div>
-      <!--  -->
-      <div class="card">
-        <img
-          src="/images/rasnov.jpg"
-          alt="Rasnov, Romania"
-          class="card__background"
-        />
-        <h2 class="card__title">Rasnov, Romania</h2>
-        <button class="card__delete"></button>
-        <button class="card__like"></button>
-      </div>
+      <template id="card">
+        <div class="card">
+          <img class="card__background" alt="city-image" />
+          <h2 class="card__title"></h2>
+          <button class="card__delete"></button>
+          <button class="card__like"></button>
+        </div>
+      </template>
     </section>
     <footer class="footer">
       <p class="footer__text">© 2021 Around The U.S.</p>
@@ -118,7 +63,7 @@
           class="popup__input popup__input_about"
           placeholder="Tautan gambar"
         />
-        <input type="submit" value="Submit" class="popup__save" />
+        <input type="submit" value="Buat" class="popup__save" />
       </form>
     </section>
     <script src="/scripts/script.js"></script>
