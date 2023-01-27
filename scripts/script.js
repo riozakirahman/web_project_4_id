@@ -1,11 +1,39 @@
+//card data
+const initialCards = [
+  {
+    name: "Lembah Yosemite",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Danau Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Pegunungan Gundul",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Gunung Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Taman Nasional Vanoise",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
+
 //element
 let profile = document.querySelector(".profile");
 let popUp = document.querySelector(".popup");
 let popUpForm = popUp.querySelector(".popup__container");
-
 let popUpClose = document.querySelectorAll(".popup .popup__close");
 let editBtn = profile.querySelector(".profile__edit-button");
 let cards = document.querySelector(".cards");
+let cardDelete = cards.querySelectorAll(".card .card__delete");
 let cardLike = cards.querySelectorAll(".card .card__like");
 let popUpAdd = document.querySelector(".popup_add");
 let popUpAddForm = popUpAdd.querySelector(".popup__container");
@@ -48,6 +76,9 @@ function deactiveLike(cardLike) {
 function addCard() {
   popUpAdd.classList.toggle("popup_opened");
 }
+function removeCard(parent) {
+  parent.remove();
+}
 
 editBtn.addEventListener("click", function () {
   popupOpen();
@@ -75,5 +106,11 @@ addBtn.addEventListener("click", () => {
 cardLike.forEach((c) => {
   c.addEventListener("click", function () {
     c.classList.toggle("card__like_active");
+  });
+});
+cardDelete.forEach((c) => {
+  let parent = c.parentElement;
+  c.addEventListener("click", () => {
+    removeCard(parent);
   });
 });
