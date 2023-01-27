@@ -1,0 +1,4 @@
+.card-detail__img {
+  object-fit: contain;
+  margin-bottom: 10px;
+}

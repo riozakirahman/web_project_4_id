@@ -72,6 +72,11 @@ function card() {
       e.target.classList.toggle("card__like_active");
     });
     cardElement.addEventListener("click", () => {});
+
+    const cardDetailTemp = document.querySelector("#card-detail").content;
+    const cardDetailElem = cardDetailTemp
+      .querySelector(".card-detail")
+      .cloneNode(true);
   });
 }
 //init card
