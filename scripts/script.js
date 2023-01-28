@@ -54,7 +54,7 @@ const detailTemplate = document.querySelector("#card-detail").content;
 function card() {
   initialCards.forEach((data) => {
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-    const cardImage = cardElement.querySelector(".card__background");
+    cardImage = cardElement.querySelector(".card__background");
     const cardTitle = cardElement.querySelector(".card__title");
     const deleteCard = cardElement.querySelector(".card__delete");
     const likeCard = cardElement.querySelector(".card__like");
@@ -97,12 +97,6 @@ function card() {
     likeCard.addEventListener("click", (e) => {
       e.target.classList.toggle("card__like_active");
     });
-    cardElement.addEventListener("click", () => {});
-
-    const cardDetailTemp = document.querySelector("#card-detail").content;
-    const cardDetailElem = cardDetailTemp
-      .querySelector(".card-detail")
-      .cloneNode(true);
   });
 }
 //init card
