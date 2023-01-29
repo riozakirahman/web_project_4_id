@@ -73,7 +73,6 @@ function popupOpen() {
 function popupClose(evt) {
   popUp.classList.remove("popup_opened");
   popUpAdd.classList.remove("popup_opened");
-  evt.preventDefault();
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();

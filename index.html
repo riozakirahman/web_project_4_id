@@ -42,7 +42,7 @@
     </footer>
     <section class="popup">
       <form class="popup__container" action="">
-        <button class="popup__close"></button>
+        <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Edit profil</h3>
         <input type="text" class="popup__input popup__input_name" />
         <input type="text" class="popup__input popup__input_about" />
@@ -51,17 +51,19 @@
     </section>
     <section class="popup popup_add">
       <form class="popup__container popup__container_create-card" action="">
-        <button class="popup__close"></button>
+        <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Tempat baru</h3>
         <input
           type="text"
           class="popup__input popup__input_name popup__input_name-card"
           placeholder="Judul"
+          required
         />
         <input
           type="text"
           class="popup__input popup__input_about popup__input_link-card"
           placeholder="Tautan gambar"
+          required
         />
         <input type="submit" value="Buat" class="popup__save" />
       </form>
