@@ -61,7 +61,25 @@ function card() {
 }
 //init card
 card();
-const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+
+// init card detail
+const detailElement = detailTemplate
+  .querySelector(".card-detail")
+  .cloneNode(true);
+const detailContainer = detailElement.querySelector(".card-detail__container");
+const detailImg = detailElement.querySelector(".card-detail__img");
+
+const detailLabel = detailElement.querySelector(".card-detail__label");
+const closeBtn = detailElement.querySelector(".popup__close_card-detail");
+detailLabel.textContent = null;
+closeBtn.addEventListener("click", () => {
+  detailElement.classList.remove("card-detail_active");
+});
+detailContainer.append(detailImg);
+detailContainer.append(detailLabel);
+detailContainer.append(closeBtn);
+detailElement.append(detailContainer);
+cardDetailSection.append(detailElement);
 
 function popupOpen() {
   popUp.classList.add("popup_opened");
@@ -126,27 +144,13 @@ function handleDeleteCard(e) {
   let parent = e.target.parentElement;
   parent.remove();
 }
+
 function handleCardImage(name, link) {
-  const detailElement = detailTemplate
-    .querySelector(".card-detail")
-    .cloneNode(true);
-  const detailContainer = detailElement.querySelector(
-    ".card-detail__container"
-  );
-  const detailImg = detailElement.querySelector(".card-detail__img");
-  detailImg.src = link;
-  const detailLabel = detailElement.querySelector(".card-detail__label");
-  const closeBtn = detailElement.querySelector(".popup__close_card-detail");
   detailLabel.textContent = name;
-  closeBtn.addEventListener("click", () => {
-    detailElement.remove();
-  });
-  detailContainer.append(detailImg);
-  detailContainer.append(detailLabel);
-  detailContainer.append(closeBtn);
-  detailElement.append(detailContainer);
-  cardDetailSection.append(detailElement);
-  window.scrollTo(0, 0);
+  detailImg.src = link;
+  detailElement.classList.add("card-detail_active");
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function addCard() {
