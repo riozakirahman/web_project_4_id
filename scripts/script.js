@@ -70,7 +70,7 @@ function popupOpen() {
   inputName.value = name;
   inputJob.value = job;
 }
-function popupClose(evt) {
+function popupClose() {
   popUp.classList.remove("popup_opened");
   popUpAdd.classList.remove("popup_opened");
 }
