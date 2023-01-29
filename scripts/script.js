@@ -70,9 +70,10 @@ function popupOpen() {
   inputName.value = name;
   inputJob.value = job;
 }
-function popupClose() {
+function popupClose(evt) {
   popUp.classList.remove("popup_opened");
   popUpAdd.classList.remove("popup_opened");
+  evt.preventDefault();
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -158,8 +159,8 @@ editBtn.addEventListener("click", function () {
 });
 
 popUpClose.forEach((e) => {
-  e.addEventListener("click", () => {
-    popupClose();
+  e.addEventListener("click", (e) => {
+    popupClose(e);
   });
 });
 
