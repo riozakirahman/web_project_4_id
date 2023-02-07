@@ -12,55 +12,69 @@
       <img src="/images/header__logo.png" alt="logo" class="header__logo" />
       <div class="header__line"></div>
     </header>
-    <section class="profile">
-      <div class="profile__avatar">
-        <img
-          src="/images/profile__avatar.jpg"
-          class="profile__avatar-img"
-          alt="profile-picture"
-        />
-      </div>
-      <div class="profile__info">
-        <h1 class="profile__name">Jacques Cousteau</h1>
-        <button class="profile__edit-button"></button>
-        <p class="profile__job">Penjelajah</p>
-      </div>
-      <button class="profile__add-button"></button>
-    </section>
-    <section class="cards">
-      <template id="card">
-        <div class="card">
-          <img class="card__background" alt="city-image" />
-          <h2 class="card__title"></h2>
-          <button class="card__delete"></button>
-          <button class="card__like"></button>
+    <main>
+      <section class="profile">
+        <div class="profile__avatar">
+          <img
+            src="/images/profile__avatar.jpg"
+            class="profile__avatar-img"
+            alt="profile-picture"
+          />
         </div>
-      </template>
-    </section>
+        <div class="profile__info">
+          <h1 class="profile__name">Jacques Cousteau</h1>
+          <button class="profile__edit-button" type="button"></button>
+          <p class="profile__job">Penjelajah</p>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="cards">
+        <template id="card">
+          <div class="card">
+            <img class="card__background" alt="city-image" />
+            <h2 class="card__title"></h2>
+            <button class="card__delete" type="button"></button>
+            <button class="card__like" type="button"></button>
+          </div>
+        </template>
+      </section>
+    </main>
     <footer class="footer">
       <p class="footer__text">© 2021 Around The U.S.</p>
     </footer>
-    <section class="popup">
-      <form class="popup__container" action="">
+    <div class="popup">
+      <form class="popup__container" action="#">
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Edit profil</h3>
-        <input type="text" class="popup__input popup__input_name" />
-        <input type="text" class="popup__input popup__input_about" />
+        <input
+          type="text"
+          name="Name"
+          class="popup__input popup__input_name"
+          required
+        />
+        <input
+          type="text"
+          name="About"
+          class="popup__input popup__input_about"
+          required
+        />
         <input type="submit" value="Submit" class="popup__save" />
       </form>
-    </section>
+    </div>
     <section class="popup popup_add">
-      <form class="popup__container popup__container_create-card" action="">
+      <form class="popup__container" action="#">
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Tempat baru</h3>
         <input
           type="text"
+          name="Title"
           class="popup__input popup__input_name popup__input_name-card"
           placeholder="Judul"
           required
         />
         <input
-          type="text"
+          type="url"
+          name="Image"
           class="popup__input popup__input_about popup__input_link-card"
           placeholder="Tautan gambar"
           required
@@ -68,17 +82,15 @@
         <input type="submit" value="Buat" class="popup__save" />
       </form>
     </section>
-    <section class="card-detail-section">
-      <template id="card-detail">
-        <div class="card-detail">
-          <div class="card-detail__container">
-            <img alt="city-image" class="card-detail__img" />
-            <p class="card-detail__label"></p>
-            <button class="popup__close popup__close_card-detail"></button>
-          </div>
-        </div>
-      </template>
-    </section>
+
+    <div class="popup popup_detail">
+      <div class="popup__container popup__container_detail">
+        <img alt="city-image" class="popup__img" />
+        <p class="popup__label"></p>
+        <button class="popup__close popup__close_card-detail"></button>
+      </div>
+    </div>
+
     <script src="/scripts/script.js"></script>
   </body>
 </html>

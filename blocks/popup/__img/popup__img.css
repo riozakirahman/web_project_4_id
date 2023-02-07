@@ -1,5 +1,4 @@
-.card-detail__img {
-  object-fit: cover;
+.popup__img {
   width: 100%;
   height: 100%;
   margin-bottom: 10px;

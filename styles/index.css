@@ -24,14 +24,12 @@
 @import url("../blocks/popup/popup.css");
 @import url("../blocks/popup/_opened/popup_opened.css");
 @import url("../blocks/popup/__container/popup__container.css");
+@import url("../blocks/popup/__container/popup__container_detail.css");
 @import url("../blocks/popup/__title/popup__title.css");
+@import url("../blocks/popup/__img/popup__img.css");
+@import url("../blocks/popup/__label/popup__label.css");
 @import url("../blocks/popup/__input/popup__input.css");
 @import url("../blocks/popup/__save/popup__save.css");
 @import url("../blocks/popup/__close/popup__close.css");
 @import url("../blocks/popup/__close/_card-detail/popup__close_card-detail.css");
 @import url("../blocks/popup/__input/_about/popup__input_about.css");
-@import url("../blocks/card-detail/card-detail.css");
-@import url("../blocks/card-detail/_active/card-detail_active.css");
-@import url("../blocks/card-detail/__container/card-detail__container.css");
-@import url("../blocks/card-detail/__img/card-detail__img.css");
-@import url("../blocks/card-detail/__label/card-detail__label.css");
