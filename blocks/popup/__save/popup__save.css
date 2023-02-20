@@ -6,7 +6,7 @@
   width: 358px;
   text-align: center;
   box-sizing: border-box;
-  margin: 0 36px 36px 36px;
+  margin: 48px 36px 36px 36px;
   font-family: Inter;
   font-size: 18px;
   font-weight: 400;
@@ -20,7 +20,7 @@
   .popup__save {
     height: 46px;
     width: 238px;
-    margin: 0 22px 25px 22px;
+    margin: 46px 22px 25px 22px;
     font-size: 14px;
     line-height: 17px;
     text-align: center;

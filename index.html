@@ -43,43 +43,57 @@
       <p class="footer__text">© 2021 Around The U.S.</p>
     </footer>
     <div class="popup">
-      <form class="popup__container" action="#">
+      <form class="popup__container" action="#" novalidate>
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Edit profil</h3>
         <input
           type="text"
+          id="name-input"
           name="Name"
           class="popup__input popup__input_name"
           required
+          minlength="2"
+          maxlength="40"
         />
+        <span class="popup__input-error name-input-error"></span>
         <input
           type="text"
           name="About"
+          id="about-input"
           class="popup__input popup__input_about"
           required
+          minlength="2"
+          maxlength="200"
         />
-        <input type="submit" value="Submit" class="popup__save" />
+        <span class="popup__input-error about-input-error"></span>
+        <button type="submit" class="popup__save">Submit</button>
       </form>
     </div>
     <section class="popup popup_add">
-      <form class="popup__container" action="#">
+      <form class="popup__container" action="#" novalidate>
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Tempat baru</h3>
         <input
           type="text"
           name="Title"
+          id="title-input"
           class="popup__input popup__input_name popup__input_name-card"
           placeholder="Judul"
           required
+          minlength="2"
+          maxlength="30"
         />
+        <span class="popup__input-error title-input-error"></span>
         <input
           type="url"
           name="Image"
+          id="image-input"
           class="popup__input popup__input_about popup__input_link-card"
           placeholder="Tautan gambar"
           required
         />
-        <input type="submit" value="Buat" class="popup__save" />
+        <span class="popup__input-error image-input-error"></span>
+        <button type="submit" class="popup__save">Buat</button>
       </form>
     </section>
 
