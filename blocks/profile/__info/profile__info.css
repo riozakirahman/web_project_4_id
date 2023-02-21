@@ -5,6 +5,7 @@
   box-sizing: border-box;
   margin: 22px 0 16px 0;
   color: white;
+  overflow: hidden;
 }
 @media screen and (min-width: 320px) and (max-width: 1279px) {
   .profile__info {

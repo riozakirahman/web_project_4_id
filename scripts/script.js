@@ -1,3 +1,5 @@
+import { enableValidation } from "./validate.js";
+
 //card data
 const initialCards = [
   {
@@ -30,7 +32,6 @@ const initialCards = [
 const profile = document.querySelector(".profile");
 const popUp = document.querySelector(".popup");
 const popUpForm = popUp.querySelector(".popup__container");
-const popUpClose = document.querySelector(".popup__close");
 const editBtn = profile.querySelector(".profile__edit-button");
 const cards = document.querySelector(".cards");
 let popUpOpened;
@@ -49,10 +50,9 @@ const detailLabel = popUpDetailForm.querySelector(".popup__label");
 let profileName = profile.querySelector(".profile__name");
 let profileJob = profile.querySelector(".profile__job");
 
-//card input value
-const popUpAddTitle = popUpAdd.querySelector(".popup__input_name");
-const popUpAddUrl = popUpAdd.querySelector(".popup__input_about");
-
+//card value
+let popUpAddTitle = popUpAdd.querySelector(".popup__input_name");
+let popUpAddUrl = popUpAdd.querySelector(".popup__input_about");
 //input
 let inputName = popUp.querySelector(".popup__input_name");
 let inputJob = popUp.querySelector(".popup__input_about");
@@ -91,27 +91,48 @@ function openPopUp(e) {
       closePopUp(e);
     }
   });
+  document.addEventListener("keydown", handleKeyDown);
 }
-function closePopUp(e) {
-  const element = e.target;
-  console.log(element);
-  if (e.target.classList.contains("popup_opened")) {
-    e.target.classList.remove("popup_opened");
-  } else if (e.target.classList.contains("popup__container")) {
-    const parent = e.target.closest(".popup");
-    parent.classList.remove("popup_opened");
-  } else if (e.target.classList.contains("popup__close")) {
-    const popupContainer = element.closest(".popup__container");
-    const popup = popupContainer.closest(".popup");
-    if (popup) {
-      popup.classList.remove("popup_opened");
-    }
+function handleKeyDown(evt) {
+  if (evt.key == "Escape" || evt.key == "Esc") {
+    closePopUp(evt);
+    document.removeEventListener("keydown", handleKeyDown);
   }
-  const formElement = e.target.closest(".popup__container");
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement);
-  });
+}
+
+function closePopUp(e) {
+  let formElement;
+
+  if (e.type == "submit" || e.type == "click") {
+    if (e.target.classList.contains("popup_opened")) {
+      formElement = e.target.querySelector(".popup__container");
+      e.target.classList.remove("popup_opened");
+    } else if (e.target.classList.contains("popup__container")) {
+      formElement = e.target.closest(".popup__container");
+      const parent = e.target.closest(".popup");
+      parent.classList.remove("popup_opened");
+    } else if (e.target.classList.contains("popup__close")) {
+      formElement = e.target.closest(".popup__container");
+      const popupContainer = e.target.closest(".popup__container");
+      const popup = popupContainer.closest(".popup");
+      if (popup) {
+        popup.classList.remove("popup_opened");
+      }
+    }
+  } else if (e.type == "keydown") {
+    formElement = e.target.closest(".popup__container");
+    const popUpOpened = document.querySelector(".popup_opened");
+    console.log(popUpOpened);
+    popUpOpened.classList.remove("popup_opened");
+  }
+  try {
+    const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
+    if (inputList) {
+      inputList.forEach((inputElement) => {
+        hideInputError(formElement, inputElement);
+      });
+    }
+  } catch (error) {}
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -172,64 +193,13 @@ function handleCardImage(name, link, e) {
   detailImg.src = link;
   openPopUp(e);
 }
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_type_error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__input-error_active");
-};
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  console.log(errorElement);
   inputElement.classList.remove("popup__input_type_error");
   errorElement.classList.remove("popup__input-error_active");
   errorElement.textContent = "";
 };
-
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-const toggleButtonState = (inputList, buttonElement) => {
-  console.log(hasInvalidInput(inputList));
-  if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
-    buttonElement.classList.add("popup__save_inactive");
-  } else {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove("popup__save_inactive");
-  }
-};
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-  const buttonElement = formElement.querySelector(".popup__save");
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-};
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".popup__container"));
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement);
-  });
-};
-enableValidation();
 
 editBtn.addEventListener("click", (e) => {
   openPopUp(e);
@@ -245,4 +215,13 @@ popUpAddForm.addEventListener("submit", (evt) => {
 
 addBtn.addEventListener("click", (e) => {
   openPopUp(e);
+});
+
+enableValidation({
+  formSelector: ".popup__container",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_inactive",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
 });

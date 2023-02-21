@@ -2,10 +2,13 @@
   width: 375px;
   height: 39px;
   margin: 0 18px 16px 0;
-  display: inline-block;
+  display: inline-flex;
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 @media screen and (min-width: 320px) and (max-width: 1279px) {
   .profile__name {
