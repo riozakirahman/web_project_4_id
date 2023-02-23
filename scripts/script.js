@@ -47,15 +47,15 @@ const detailImg = popUpDetailForm.querySelector(".popup__img");
 const detailLabel = popUpDetailForm.querySelector(".popup__label");
 
 //profile value
-let profileName = profile.querySelector(".profile__name");
-let profileJob = profile.querySelector(".profile__job");
+const profileName = profile.querySelector(".profile__name");
+const profileJob = profile.querySelector(".profile__job");
 
 //card value
-let popUpAddTitle = popUpAdd.querySelector(".popup__input_name");
-let popUpAddUrl = popUpAdd.querySelector(".popup__input_about");
+const popUpAddTitle = popUpAdd.querySelector(".popup__input_name");
+const popUpAddUrl = popUpAdd.querySelector(".popup__input_about");
 //input
-let inputName = popUp.querySelector(".popup__input_name");
-let inputJob = popUp.querySelector(".popup__input_about");
+const inputName = popUp.querySelector(".popup__input_name");
+const inputJob = popUp.querySelector(".popup__input_about");
 
 //template
 const cardTemplate = document.querySelector("#card").content;
@@ -72,8 +72,8 @@ loadCard();
 function openPopUp(e) {
   if (e.target == editBtn) {
     popUp.classList.add("popup_opened");
-    let name = profileName.textContent;
-    let job = profileJob.textContent;
+    const name = profileName.textContent;
+    const job = profileJob.textContent;
     inputName.value = name;
     inputJob.value = job;
   } else if (e.target == addBtn) {
