@@ -1,5 +1,3 @@
-import { enableValidation } from "./validate.js";
-
 //card data
 const initialCards = [
   {
@@ -34,7 +32,6 @@ const popUp = document.querySelector(".popup");
 const popUpForm = popUp.querySelector(".popup__container");
 const editBtn = profile.querySelector(".profile__edit-button");
 const cards = document.querySelector(".cards");
-let popUpOpened;
 
 const popUpAdd = document.querySelector(".popup_add");
 const popUpAddForm = popUpAdd.querySelector(".popup__container");
@@ -62,7 +59,7 @@ const cardTemplate = document.querySelector("#card").content;
 
 function loadCard() {
   initialCards.forEach((data) => {
-    let cardElement = createCard(data.name, data.link);
+    const cardElement = createCard(data.name, data.link);
     cards.append(cardElement);
   });
 }
@@ -83,7 +80,7 @@ function openPopUp(e) {
   } else if (e.target.classList == "card__background") {
     popUpDetail.classList.add("popup_opened");
   }
-  popUpOpened = document.querySelector(".popup_opened");
+  const popUpOpened = document.querySelector(".popup_opened");
   popUpOpened.addEventListener("click", (e) => {
     if (e.target.classList.contains("popup__close")) {
       closePopUp(e);
@@ -215,13 +212,4 @@ popUpAddForm.addEventListener("submit", (evt) => {
 
 addBtn.addEventListener("click", (e) => {
   openPopUp(e);
-});
-
-enableValidation({
-  formSelector: ".popup__container",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__save",
-  inactiveButtonClass: "popup__save_inactive",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
 });
