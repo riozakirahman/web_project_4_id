@@ -7,9 +7,9 @@ Feature:
 
 - Edit User Profile
 
-**Figma Design**
+**Webpage Link**
 
-- [Link to Design in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+- [Link to Website](https://riozakirahman.github.io/web_project_4_id/)
 
 ### Feature
 
