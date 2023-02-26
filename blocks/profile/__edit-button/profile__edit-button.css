@@ -3,7 +3,7 @@
   height: 24px;
   width: 24px;
   margin: 0;
-  background-image: url("/images/EditButton.png");
+  background-image: url("../../../images/EditButton.png");
   background-size: cover;
   display: inline-block;
   cursor: pointer;
