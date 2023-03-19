@@ -1,4 +1,4 @@
-import { card } from "../components/card.js";
+import { Card } from "../components/card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import PopupWithForm from "../components/popupwithform.js";
 import PopupWithImage from "../components/popupwithimage.js";
@@ -33,13 +33,16 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-
-//profile
+const logo = new URL("../images/header__logo.png", import.meta.url);
+const avatar = new URL("../images/profile__avatar.jpg", import.meta.url);
+const headerLogo = document.querySelector("#header__logo");
+headerLogo.src = logo;
+const profileAva = document.querySelector("#profile-picture");
+profileAva.src = avatar;
 const profile = document.querySelector(".profile");
 const popUp = document.querySelector(".popup");
-const popUpForm = popUp.querySelector(".popup__container");
-export const editBtn = profile.querySelector(".profile__edit-button");
-export const addBtn = profile.querySelector(".profile__add-button");
+const editBtn = profile.querySelector(".profile__edit-button");
+const addBtn = profile.querySelector(".profile__add-button");
 //profile
 
 const cards = document.querySelector(".cards");
@@ -49,8 +52,6 @@ const popUpAddName = popUpAddForm.querySelector(".popup__input_name-card");
 const popUpAddLink = popUpAddForm.querySelector(".popup__input_link-card");
 
 //profile value
-const profileName = profile.querySelector(".profile__name");
-const profileJob = profile.querySelector(".profile__job");
 
 //input
 const inputName = popUp.querySelector(".popup__input_name");
@@ -58,10 +59,10 @@ const inputJob = popUp.querySelector(".popup__input_about");
 
 function loadCard(data) {
   const popupImage = new PopupWithImage(".popup_detail");
-  const cardElement = new card(data, ".card", () => {
+  const cardElement = new Card(data, ".card", () => {
     popupImage._handleCardClick(data);
   });
-  cardElement._getTemplate();
+  cardElement.getTemplate();
   cardElement.generateCard();
   return cardElement.element;
 }
@@ -92,28 +93,20 @@ const data = {
 const validation = new FormValidator(selector, data);
 validation.enableValidation();
 
-const user = new userInfo({
-  name: profileName.textContent,
-  job: profileJob.textContent,
-});
-
-const profileData = {
-  profileName,
-  profileJob,
-  inputName,
-  inputJob,
-  popUpAddName,
-  popUpAddLink,
-  user,
-};
-
 const newCardData = {
   popUpAddName,
   popUpAddLink,
 };
 
-editBtn.addEventListener("click", (e) => {
-  const form = new PopupWithForm(".popup", profileData);
+editBtn.addEventListener("click", () => {
+  const userData = new userInfo();
+  const name = userData.getUserInfo().name;
+  const job = userData.getUserInfo().job;
+  const data = {
+    name,
+    job,
+  };
+  const form = new PopupWithForm(".popup", data);
   form.setEventListeners();
 });
 

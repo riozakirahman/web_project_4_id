@@ -1,11 +1,11 @@
-export class card {
+export class Card {
   constructor(data, cardSelector, handleCardClick) {
     this.data = data;
     this.cardSelector = cardSelector;
     this.handleCardClick = handleCardClick;
   }
 
-  _getTemplate() {
+  getTemplate() {
     const cardElement = document
       .querySelector("#card")
       .content.querySelector(this.cardSelector)
@@ -26,11 +26,6 @@ export class card {
   generateCard() {
     this._setEventListeners();
   }
-  generateNewCard() {
-    this._setEventListeners();
-    const cards = document.querySelector(".cards");
-    cards.prepend(this.element);
-  }
 
   _setEventListeners() {
     this.element.addEventListener("click", (e) => {
@@ -45,7 +40,7 @@ export class card {
   }
 
   _handleDeleteCard(e) {
-    let parent = e.target.closest(".card");
+    const parent = e.target.closest(".card");
     parent.remove();
   }
   _handleLikeCard(e) {

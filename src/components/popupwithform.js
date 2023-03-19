@@ -1,7 +1,8 @@
 import Popup from "./popup.js";
-import { card } from "./card.js";
+import { Card } from "./card.js";
 import PopupWithImage from "./popupwithimage.js";
 import { userInfo } from "./userInfo.js";
+import { Section } from "./section.js";
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, data) {
@@ -10,49 +11,71 @@ export default class PopupWithForm extends Popup {
     this.popup = document.querySelector(this.popupSelector);
     this.popupForm = this.popup.querySelector(".popup__container");
   }
-  _getInputValues = () => {};
-
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-    if (this.popupSelector == ".popup") {
-      const user = new userInfo({
-        name: this.data.inputName.value,
-        job: this.data.inputJob.value,
-      });
-
-      this.data.profileName.textContent = user.getUserInfo().name;
-      this.data.profileJob.textContent = user.getUserInfo().job;
-      this.close();
-    } else if (this.popupSelector == ".popup_add") {
-      const popupImage = new PopupWithImage(".popup_detail");
-
-      const newCard = {
-        name: this.data.popUpAddName.value,
-        link: this.data.popUpAddLink.value,
-      };
-      const cardElement = new card(newCard, ".card", () => {
-        popupImage._handleCardClick(newCard);
-      });
-
-      cardElement._getTemplate();
-      cardElement.generateNewCard();
-      this.close();
-    }
+  _getInputValues = () => {
+    const userData = new userInfo();
+    const name = userData.inputName.value;
+    const job = userData.inputJob.value;
+    return {
+      name,
+      job,
+    };
   };
 
   setEventListeners = () => {
     super.setEventListeners();
-    const popupOpened = document.querySelector(".popup_opened");
-    this.form = popupOpened.querySelector(".popup__container");
-    this.form.addEventListener("submit", this.handleSubmit);
+
+    if (this.popupSelector == ".popup") {
+      const userData = new userInfo();
+      userData.setUserInfo(this.data.name, this.data.job);
+    }
+
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      if (this.popupSelector == ".popup") {
+        const user = new userInfo();
+        user.setUserInfo(
+          this._getInputValues().name,
+          this._getInputValues().job
+        );
+        document
+          .querySelector(this.popupSelector)
+          .classList.remove("popup_opened");
+      } else if (this.popupSelector == ".popup_add") {
+        const newCard = {
+          name: this.data.popUpAddName.value,
+          link: this.data.popUpAddLink.value,
+        };
+        const renderCard = new Section(
+          {
+            items: newCard,
+            renderer: (cardData) => {
+              const popupImage = new PopupWithImage(".popup_detail");
+
+              const cardElement = new Card(newCard, ".card", () => {
+                popupImage._handleCardClick(newCard);
+              });
+
+              cardElement.getTemplate();
+              cardElement.generateCard();
+              return cardElement.element;
+            },
+          },
+          ".cards"
+        );
+
+        renderCard.renderer(true);
+        document
+          .querySelector(this.popupSelector)
+          .classList.remove("popup_opened");
+        this.popupForm.reset();
+      }
+
+      this.popupForm.removeEventListener("submit", handleSubmit);
+    };
+
+    this.popupForm.addEventListener("submit", handleSubmit);
   };
   close() {
     super.close();
-    this.form.removeEventListener("submit", this.handleSubmit);
-    // remove card form
-    if (this.popupSelector == ".popup_add") {
-      this.popup.querySelector(".popup__input_name").value = "";
-      this.popup.querySelector(".popup__input_about").value = "";
-    }
   }
 }
