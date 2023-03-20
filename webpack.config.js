@@ -44,6 +44,21 @@ module.exports = {
         ],
       },
       {
+        test: /\.html$/i,
+        loader: "html-loader",
+        options: {
+          sources: {
+            list: [
+              {
+                tag: "img",
+                attribute: "src",
+                type: "src",
+              },
+            ],
+          },
+        },
+      },
+      {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
         type: "asset/resource",
       },

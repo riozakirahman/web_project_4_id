@@ -1,4 +1,3 @@
-import { userInfo } from "./userInfo";
 export default class Popup {
   constructor(popupSelector) {
     this.popupSelector = popupSelector;
@@ -35,7 +34,10 @@ export default class Popup {
   };
 
   setEventListeners() {
-    this.open();
+    if (!this.popupImage) {
+      this.open();
+    }
+
     this.close();
   }
 }
