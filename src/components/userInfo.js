@@ -10,7 +10,13 @@ export class userInfo {
     return {
       name: this.profileName.textContent,
       job: this.profileJob.textContent,
+      id: this._id,
     };
+  }
+  setInitialInfo(name, job, _id) {
+    this.profileName.textContent = name;
+    this.profileJob.textContent = job;
+    this._id = _id;
   }
   setUserInfo(name, job) {
     this.inputName.value = name;

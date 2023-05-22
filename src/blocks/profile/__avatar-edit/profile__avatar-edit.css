@@ -1,0 +1,10 @@
+.profile__avatar-edit {
+  position: absolute;
+  bottom: 47px;
+  right: 74px;
+  opacity: 0;
+  visibility: hidden;
+  cursor: none;
+  z-index: -1;
+  transition: all 0.2s linear;
+}

@@ -3,7 +3,6 @@ export class Section {
     if (!Array.isArray(items)) {
       items = [items];
     }
-
     this.items = items;
     this.rendererFunction = renderer;
     this.selector = document.querySelector(selector);

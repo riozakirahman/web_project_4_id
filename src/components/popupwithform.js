@@ -26,6 +26,13 @@ export default class PopupWithForm extends Popup {
         name: this.popupAddName,
         link: this.popupAddLink,
       };
+    } else if (this.popupSelector === ".popup_profile") {
+      this.inputProfilePic = this.popup.querySelector(
+        ".popup__input_profilePic"
+      ).value;
+      return {
+        link: this.inputProfilePic,
+      };
     }
   };
   _callHandleFormSubmit() {

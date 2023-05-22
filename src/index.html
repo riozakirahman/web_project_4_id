@@ -21,16 +21,20 @@
       <section class="profile">
         <div class="profile__avatar">
           <img
-            src="./images/profile__avatar.jpg"
             id="profile-picture"
             class="profile__avatar-img"
             alt="profile-picture"
           />
+          <img
+            src="./images/editProfile.png"
+            class="profile__avatar-edit"
+            alt="profile-picture-edit"
+          />
         </div>
         <div class="profile__info">
-          <h1 class="profile__name">Jacques Cousteau</h1>
+          <h1 class="profile__name"></h1>
           <button class="profile__edit-button" type="button"></button>
-          <p class="profile__job">Penjelajah</p>
+          <p class="profile__job"></p>
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
@@ -41,6 +45,7 @@
             <h2 class="card__title"></h2>
             <button class="card__delete" type="button"></button>
             <button class="card__like" type="button"></button>
+            <span class="card__likes"></span>
           </div>
         </template>
       </section>
@@ -119,6 +124,35 @@
         <p class="popup__label"></p>
         <button class="popup__close popup__close_card-detail"></button>
       </div>
+    </div>
+
+    <div class="popup popup_delete">
+      <form class="popup__container popup__container_delete">
+        <h3 class="popup__title popup__title_delete">Apakah Anda yakin?</h3>
+        <button type="submit" class="popup__save popup__save_delete">Ya</button>
+        <button class="popup__close popup__close_delete"></button>
+      </form>
+    </div>
+
+    <div class="popup popup_profile">
+      <form
+        class="popup__container popup__container_form"
+        action="#"
+        novalidate
+      >
+        <button class="popup__close" type="button"></button>
+        <h3 class="popup__title">Ubah foto profil</h3>
+        <input
+          type="url"
+          name="profilePicture"
+          id="profilePicture-input"
+          class="popup__input popup__input_about popup__input_profilePic"
+          required
+          placeholder="Tautan gambar"
+        />
+        <span class="popup__input-error profilePicture-input-error"></span>
+        <button type="submit" class="popup__save">Submit</button>
+      </form>
     </div>
   </body>
 </html>
