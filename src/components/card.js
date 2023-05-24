@@ -19,6 +19,7 @@ export class Card {
       const likes = this.data.likes[i]._id;
       if (likes === this.user_id) {
         this.liked = true;
+
         break;
       }
     }
@@ -43,6 +44,10 @@ export class Card {
     if (this.data.owner._id != this.user_id) {
       this.deleteCard.remove();
     }
+    if (this.liked) {
+      this.likeCard.classList.add("card__like_active");
+    }
+
     cardElement.append(this.likeCard);
     cardElement.append(this.likesCard);
 

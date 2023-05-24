@@ -30,7 +30,6 @@ const fetchData = async () => {
       const user = new userInfo();
       user.setInitialInfo(userData.name, userData.about, userData._id);
       profilePic.src = userData.avatar;
-      console.log(userData);
       return user.getUserInfo().id;
     })
     .then((user_id) => {
@@ -51,7 +50,6 @@ const renderCard = (user_id) => {
   api
     .getCard()
     .then((res) => {
-      console.log(res);
       const initialCards = res;
       const renderCard = new Section(
         {
@@ -85,7 +83,7 @@ function loadCard(data, user_id) {
     api,
     user_id
   );
-  console.log(cardElement.user_id);
+
   cardElement.getTemplate();
   cardElement.generateCard();
   return cardElement.element;
@@ -126,7 +124,6 @@ function handleFormProfile() {
 function handleProfilePic(element) {
   const popup = new PopupWithForm(".popup_profile");
   const linkAvatar = popup._getInputValues().link;
-  console.log(linkAvatar);
 
   //set avatar to element
   api
@@ -139,7 +136,6 @@ function handleProfilePic(element) {
     })
     .then((result) => {
       element.src = result.avatar;
-      console.log(result);
     })
     .catch((err) => {
       console.log(err);
@@ -169,7 +165,6 @@ function handleFormCard(user_id) {
   });
 
   api.createCard(newCard.name, newCard.link).then((card) => {
-    console.log(card);
     const renderCard = new Section(
       {
         items: card,
